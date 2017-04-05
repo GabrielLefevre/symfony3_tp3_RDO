@@ -10,4 +10,49 @@ namespace AppBundle\Repository;
  */
 class PanelProductionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function cableByCentaure() {
+        $qb = $this->createQueryBuilder('p');
+        $qb ->where('p.cableBy= :ca')->setParameter('ca', 'Centaure Systems');
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function cableByEiffage() {
+        $qb = $this->createQueryBuilder('p');
+        $qb ->where('p.cableBy= :ca')->setParameter('ca', 'Eiffage');
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function structureSimpleFace() {
+        $qb = $this->createQueryBuilder('p');
+        $qb ->where('p.structure= :st')->setParameter('st', 'Simple Face');
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function structureDoubleFace() {
+        $qb = $this->createQueryBuilder('p');
+        $qb ->where('p.structure= :st')->setParameter('st', 'Double Face');
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function structureMural() {
+        $qb = $this->createQueryBuilder('p');
+        $qb ->where('p.structure= :st')->setParameter('st', 'Mural');
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+
+
+
 }

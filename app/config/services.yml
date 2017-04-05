@@ -7,3 +7,16 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.rdo_add:
+        class: AppBundle\Services\RDO
+        arguments:
+             - '@doctrine.orm.entity_manager'
+
+    app.chart.data:
+        class: AppBundle\Chart\ChartData
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    app.chart:
+        class: AppBundle\Chart\Chart
+        arguments:
+            - '@app.chart.data'

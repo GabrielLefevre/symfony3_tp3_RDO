@@ -12,6 +12,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PanelProductionType extends AbstractType
 {
@@ -23,26 +24,26 @@ class PanelProductionType extends AbstractType
     {
         $builder
             ->add('serialnumber', null,array('label' => 'form.panel.panelproductiontype.serialnumber'))
-            ->add('madeAt', 'centaure_bundles_messagebundle_type_datetype',
-                array(
+            ->add('madeAt',null, array(
                     'label' => 'form.panel.panelproductiontype.madeAt',
                     'required' => false,
                     'attr' => array('placeholder' => date('Y-m-d'), 'label-inline' => 'label-inline', 'class' => 'myDatePiker'))
             )
-            ->add('profile', 'choice', array('label' => 'form.panel.panelproductiontype.profile', 'choices' => array(
+            ->add('profile', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.profile', 'choices' => array(
                 'PR96' => 'PR96',
                 'PR116' => 'PR116'
             )))
-            ->add('structure', 'choice', array('label' => 'form.panel.panelproductiontype.structure', 'choices' => array(
+            ->add('structure', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.structure', 'choices' => array(
                 'Simple Face' => 'Simple Face',
                 'Double Face' => 'Double Face',
                 'Mural' => 'Mural'
             )))
-            ->add('ral', 'choice', array('label' => 'form.panel.panelproductiontype.ral', 'choices' => array(
+            ->add('ral', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.ral', 'choices' => array(
                 'AKZO 900 Gris'        => 'AKZO 900 Gris',
                 'AKZO 2500 Vert'       => 'AKZO 2500 Vert',
                 'AKZO 2525 Manganese'  => 'AKZO 2525 Manganese',
                 'AKZO 2600 Sable'      => 'AKZO 2600 Sable',
+                'AKZO 2400 Gris Sable' => 'AKZO 2400 Gris Sable',
                 'AKZO 2650 Brun'       => 'AKZO 2650 Brun',
                 'AKZO 2900 Gris'       => 'AKZO 2900 Gris',
                 'RAL 900 Sable Noir'   => 'RAL 900 Sable Noir',
@@ -99,14 +100,14 @@ class PanelProductionType extends AbstractType
                 'RAL 9017 Noir Trafic'  => 'RAL 9017 Noir Trafic',
                 'HORS NUANCIER BG4515BF4 MG Gris Satine Metal Givre' => 'HORS NUANCIER BG4515BF4 MG Gris Satine Metal Givre'
             )))
-            ->add('cableBy', 'choice', array('label' => 'form.panel.panelproductiontype.profile', 'choices' => array(
+            ->add('cableBy', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.profile', 'choices' => array(
                 'CentaureSystems' => 'Centaure Systems',
                 'Eiffage' => 'Eiffage'
             )))
-            ->add('regul', 'centaure_bundles_messagebundle_type_yesnotype', array('label' => 'form.panel.panelproductiontype.regul'))
-            ->add('backlighting', 'centaure_bundles_messagebundle_type_yesnotype', array('label' => 'form.panel.panelproductiontype.backlighting'))
-            ->add('rebootModem', 'centaure_bundles_messagebundle_type_yesnotype', array('label' => 'form.panel.panelproductiontype.rebootModem'))
-            ->add('triLed', 'choice', array('label' => 'form.panel.panelproductiontype.triLed', 'choices' => array(
+            ->add('regul', null, array('label' => 'form.panel.panelproductiontype.regul'))
+            ->add('backlighting', null, array('label' => 'form.panel.panelproductiontype.backlighting'))
+            ->add('rebootModem', null, array('label' => 'form.panel.panelproductiontype.rebootModem'))
+            ->add('triLed', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.triLed', 'choices' => array(
                 'Cree Wb-A4' => 'Cree Wb-A4',
                 'Cree Wb-A5' => 'Cree Wb-A5',
                 'Cree Xb-Wp' => 'Cree Xb-Wp',
@@ -118,54 +119,56 @@ class PanelProductionType extends AbstractType
                 'Cree Ya-Wr' => 'Cree Ya-Wr',
                 'Cree Ya-Ws' => 'Cree Ya-Ws',
                 'Cree Yb-Ws' => 'Cree Yb-Ws',
-                'Osram V1-5' => 'Osram V1-5',
-                'Osram V1-6' => 'Osram V1-6',
-                '2U2W1T-AA' => '2U2W1T-AA',
-                '2U2W2T-AB' => '2U2W2T-AB'
             )))
-            ->add('powerSupply', 'choice', array('label' => 'form.panel.panelproductiontype.powerSupply', 'choices' => array(
-                'Emerson Astec 5v' => 'Emerson Astec 5v',
+            ->add('powerSupply', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.powerSupply', 'choices' => array(
                 'Meanwell HRP-450-3.3' => 'Meanwell HRP-450-3.3',
                 'Meanwell HRP-450-5' => 'Meanwell HRP-450-5',
-                'Meanwell USP 500' => 'Meanwell USP 500'
+                'Meanwell USP 500' => 'Meanwell USP 500',
+                'Meanwell USP500' => 'Meanwell USP500',
+                'Emmerson Astec 3.3V' => 'Emmerson Astec 3.3V',
+                'Meanwell HRP-450-3.3' => 'Meanwell HRP-450-3.3',
+                'Emmerson Astec 5V' => 'Emmerson Astec 5V',
+                'Meanwell HRP-450-5' => 'Meanwell HRP-450-5',
+                'Emmerson Astec 4.6V G2' => 'Emmerson Astec 4.6V G2'
             )))
-            ->add('orderSupply', 'choice', array('label' => 'form.panel.panelproductiontype.orderSupply', 'choices' => array(
+            ->add('orderSupply', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.orderSupply', 'choices' => array(
                 'Meanwell RD50 12' => 'Meanwell RD50 12',
                 'Meanwell RD150 12' => 'Meanwell RD150 12',
                 'Meanwell S100F 12' => 'Meanwell S100F 12',
             )))
-            ->add('flashCard', 'choice', array('label' => 'form.panel.panelproductiontype.flashCard', 'choices' => array(
+            ->add('flashCard', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.flashCard', 'choices' => array(
                 '16Go MSata W7' => '16Go MSata W7',
                 '2Go WES W7' => '2Go WES W7',
                 '8Go WES W7' => '8Go WES W7',
             )))
-            ->add('videoCard', 'choice', array('label' => 'form.panel.panelproductiontype.videoCard', 'choices' => array(
+            ->add('videoCard', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.videoCard', 'choices' => array(
                 'CENT118E' => 'CENT118E',
                 'CENT118C' => 'CENT118C',
                 'CENT118B' => 'CENT118B',
             )))
-            ->add('videoOut', 'choice', array('label' => 'form.panel.panelproductiontype.videoOut', 'choices' => array(
+            ->add('videoOut', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.videoOut', 'choices' => array(
                 'CENT127A' => 'CENT127A',
                 'EPM1534' => 'EPM1534'
             )))
-            ->add('modem', 'choice', array('label' => 'form.panel.panelproductiontype.modem', 'choices' => array(
+            ->add('modem', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.modem', 'choices' => array(
                 'Aucun' => 'Aucun',
                 'Erco&Gener Genpro 18E' => 'Erco&Gener Genpro 18E',
                 'SIM5360E' => 'SIM5360E',
                 'T5320E (3G)' => 'T5320E (3G)',
                 'T900' => 'T900',
+                'WPEA 252NI (wifi)' => 'WPEA 252NI (wifi)'
             )))
-            ->add('antenna', 'choice', array('label' => 'form.panel.panelproductiontype.antenna', 'choices' => array(
+            ->add('antenna', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.antenna', 'choices' => array(
                 'GC500L ( patch )' => 'GC500L ( patch )',
                 'GC664B ( chapeau )' => 'GC664B ( chapeau )'
             )))
-            ->add('fixation', 'choice', array('label' => 'form.panel.panelproductiontype.fixation', 'choices' => array(
+            ->add('fixation', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.fixation', 'choices' => array(
                 'Equerres externes' => 'Equerres externes',
-                'Equerres interne' => 'Equerres interne',
+                'Equerres internes' => 'Equerres internes',
                 'Equerres inox' => 'Equerres inox',
                 'Autres' => 'Autres'
             )))
-            ->add('macif', 'choice', array('label' => 'form.panel.panelproductiontype.macif', 'choices' => array(
+            ->add('macif', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.macif', 'choices' => array(
                 'Neuf' => 'Neuf',
                 'Contre Plaque' => 'Contre Plaque',
                 'Pré-Fabriqué' => 'Pré-Fabriqué',
@@ -173,18 +176,18 @@ class PanelProductionType extends AbstractType
                 'Scellement Chimique' => 'Scellement Chimique',
                 'Autres' => 'Autres'
             )))
-            ->add('protection', 'choice', array('label' => 'form.panel.panelproductiontype.protection', 'choices' => array(
+            ->add('protection', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.protection', 'choices' => array(
                 'Citel MSB10-400' => 'Citel MSB10-400',
             )))
-            ->add('thermostat', 'choice', array('label' => 'form.panel.panelproductiontype.thermostat', 'choices' => array(
+            ->add('thermostat', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.thermostat', 'choices' => array(
                 '30°' => '30°',
             )))
-            ->add('filter', 'choice', array('label' => 'form.panel.panelproductiontype.filter', 'choices' => array(
+            ->add('filter', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.filter', 'choices' => array(
                 '16A' => '16A',
                 '30A' => '30A',
                 '5A' => '5A'
             )))
-            ->add('fan', 'choice', array('label' => 'form.panel.panelproductiontype.fan', 'choices' => array(
+            ->add('fan', ChoiceType::class, array('label' => 'form.panel.panelproductiontype.fan', 'choices' => array(
                 'Diam. 120' => 'Diam. 120',
             )))
         ;
